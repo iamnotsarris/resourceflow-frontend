@@ -1,1 +1,2 @@
-@import "tailwindcss";
+/* O Tailwind e o design system agora vivem em src/index.css.
+   Estilos específicos de páginas podem entrar aqui se necessário. */

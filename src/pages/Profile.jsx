@@ -52,14 +52,54 @@ function Profile() {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
+  // Salvar alterações do perfil
+  const handleSave = async () => {
+    const storedUser = localStorage.getItem("user");
+
+    if (!storedUser) {
+      setIsEditing(false);
+      return;
+    }
+
+    try {
+      const userObj = JSON.parse(storedUser);
+      const userId = userObj.id;
+
+      const response = await fetch(
+        `http://localhost:3000/api/users/${userId}`,
+        {
+          method: "PUT",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            nome: formData.name,
+            email: formData.email,
+            telefone: formData.phone,
+          }),
+        }
+      );
+
+      if (response.ok) {
+        alert("Perfil atualizado com sucesso!");
+      } else {
+        console.error("Erro ao atualizar perfil:", response.status);
+        alert("Não foi possível salvar as alterações.");
+      }
+    } catch (error) {
+      console.error("Erro:", error);
+      alert("Erro de conexão com o servidor.");
+    } finally {
+      setIsEditing(false);
+    }
+  };
+
   return (
-    <div className="flex min-h-screen bg-slate-950">
+    <div className="flex min-h-screen app-aurora">
       <Sidebar />
 
-      <main className="flex-1 lg:ml-64 p-8 transition-all duration-300">
-        <div className="relative mb-24">
-          <div className="h-48 w-full bg-linear-to-r from-blue-600 to-purple-600 rounded-2xl shadow-lg"></div>
-          <div className="absolute -bottom-16 left-8 flex items-end">
+      <main className="flex-1 p-6 md:p-10 transition-all duration-300">
+        <div className="relative mb-24 pt-4">
+          <div className="h-48 w-full bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl shadow-lg"></div>
+          <div className="absolute -bottom-16 left-6 sm:left-8 flex items-end">
             <div className="relative group">
               <img
                 src={formData.avatar}
@@ -71,34 +111,37 @@ function Profile() {
               </button>
             </div>
             <div className="mb-4 ml-4">
-              <h1 className="text-3xl font-bold text-white">{formData.name}</h1>
+              <h1 className="text-2xl sm:text-3xl font-bold text-white">
+                {formData.name || "Seu Nome"}
+              </h1>
               <p className="text-slate-400">{formData.role}</p>
             </div>
           </div>
-          <div className="absolute bottom-4 right-4 md:bottom-15 md:right-0">
+          <div className="absolute bottom-4 right-2 md:bottom-15 md:right-0">
             {isEditing ? (
               <button
                 onClick={handleSave}
-                className="flex items-center gap-2 bg-green-600 hover:bg-green-700 text-white px-6 py-2 rounded-xl shadow-lg transition-all cursor-pointer font-semibold"
+                className="flex items-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white px-6 py-2.5 rounded-xl shadow-lg transition-all cursor-pointer font-semibold"
               >
                 <IoSave size={20} /> Salvar Alterações
               </button>
             ) : (
               <button
                 onClick={() => setIsEditing(true)}
-                className="flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-white px-6 py-2 rounded-xl border border-slate-700 transition-all cursor-pointer font-semibold"
+                className="flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-white px-6 py-2.5 rounded-xl border border-slate-700 transition-all cursor-pointer font-semibold"
               >
                 <IoPencil size={20} /> Editar Perfil
               </button>
             )}
           </div>
         </div>
-        <div className="bg-slate-900 border border-slate-800 rounded-2xl p-8 shadow-2xl max-w-4xl">
+
+        <div className="glass border border-slate-800 rounded-2xl p-6 sm:p-8 shadow-2xl max-w-4xl">
           <h2 className="text-xl font-bold text-white mb-6 border-b border-slate-800 pb-4">
             Informações Pessoais
           </h2>
 
-          <form className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <form className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
             <InputGroup
               label="Nome Completo"
               name="name"
@@ -145,14 +188,17 @@ function Profile() {
                 value={formData.bio}
                 onChange={handleInputChange}
                 disabled={!isEditing}
+                placeholder={
+                  isEditing ? "Conte um pouco sobre você..." : ""
+                }
                 className={`
-                                    w-full px-4 py-3 rounded-xl bg-slate-950 border outline-none transition-all resize-none
-                                    ${
-                                      !isEditing
-                                        ? "border-slate-800 text-slate-400"
-                                        : "border-blue-500/50 text-white focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
-                                    }
-                                `}
+                  w-full px-4 py-3 rounded-xl bg-slate-950/60 border outline-none transition-all resize-none placeholder-slate-600
+                  ${
+                    !isEditing
+                      ? "border-slate-800 text-slate-400"
+                      : "border-blue-500/50 text-white focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
+                  }
+                `}
               />
             </div>
           </form>
@@ -171,15 +217,15 @@ function InputGroup({ label, name, value, onChange, disabled, icon }) {
 
       <div
         className={`
-                flex items-center gap-3 px-4 py-3 rounded-xl border transition-all duration-300
-                ${
-                  disabled
-                    ? "bg-slate-950/50 border-slate-800 text-slate-400" // Estilo "Leitura"
-                    : "bg-slate-950 border-blue-500/50 text-white shadow-lg shadow-blue-500/10" // Estilo "Edição"
-                }
-            `}
+          flex items-center gap-3 px-4 py-3 rounded-xl border transition-all duration-300
+          ${
+            disabled
+              ? "bg-slate-950/50 border-slate-800 text-slate-400"
+              : "bg-slate-950 border-blue-500/50 text-white shadow-lg shadow-blue-500/10"
+          }
+        `}
       >
-        <span className={`${disabled ? "text-slate-600" : "text-blue-500"}`}>
+        <span className={`${disabled ? "text-slate-600" : "text-blue-400"}`}>
           {icon}
         </span>
 
@@ -190,7 +236,7 @@ function InputGroup({ label, name, value, onChange, disabled, icon }) {
           value={value}
           onChange={onChange}
           disabled={disabled}
-          className="bg-transparent outline-none w-full font-medium"
+          className="bg-transparent outline-none w-full font-medium disabled:cursor-not-allowed"
         />
       </div>
     </div>

@@ -4,100 +4,106 @@ import { useNavigate } from "react-router-dom";
 // Importacoes de particulas
 import ParticlesBackground from "../components/Particles";
 
+// Icones
+import { FaGithub, FaLinkedin, FaGlobe } from "react-icons/fa";
+import { IoArrowForward, IoPersonAddOutline } from "react-icons/io5";
+
 function DefaultPage() {
   const navigate = useNavigate();
-  const handleSelectLogin = () => {
-    navigate("/Login");
-  };
-  const handleSelectSingUp = () => {
-    navigate("/Cadastro");
-  };
+  const handleSelectLogin = () => navigate("/login");
+  const handleSelectSingUp = () => navigate("/cadastro");
 
   return (
-    <>
-      {/* Inicalizacao de particulas */}
+    <div className="relative min-h-screen overflow-hidden app-aurora text-white">
+      {/* Inicializacao de particulas */}
       <ParticlesBackground />
+
       {/* Configurações gerais da página */}
-      <div className="min-h-screen bg-[rgba(58,37,193,0.388)] text-white text-center flex flex-col items-center bg relative z-10">
-        {/* Logo */}
-        <img src={Logo} alt="" className="h-96 w-96 object-contain" />
+      <div className="relative z-10 min-h-screen flex flex-col items-center justify-between px-6 py-10">
+        {/* Conteudo principal */}
+        <div className="flex-1 flex flex-col items-center justify-center text-center max-w-3xl mx-auto animate-fade-in-up">
+          <img
+            src={Logo}
+            alt="Resource Flow"
+            className="h-28 w-28 sm:h-40 sm:w-40 object-contain drop-shadow-[0_0_35px_rgba(96,165,250,0.35)]"
+          />
 
-        {/* Container background */}
-        <div className="">
-          <div className="background">
-            {/* Conteudo principal */}
-            <div className="flex flex-col items-center justify-center">
-              <h1 className="font-bold text-6xl">
-                Bem vindo(a) ao Resource Flow!
-              </h1>
+          <span className="mt-6 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-1.5 text-xs sm:text-sm font-medium text-slate-300 backdrop-blur-sm">
+            <span className="h-2 w-2 rounded-full bg-emerald-400 animate-pulse" />
+            Agendamento inteligente para instituições de ensino
+          </span>
 
-              {/* Sub-conteudo */}
-              <div className="m-5">
-                <p>
-                  Uma plataforma intuitiva e simples para o agendamento de
-                  eventos em uma instituição de ensino.
-                </p>
-                <p>Comece fazendo o login na plataforma 🙂👇</p>
-              </div>
+          <h1 className="mt-6 text-4xl sm:text-6xl font-extrabold tracking-tight">
+            Bem-vindo(a) ao{" "}
+            <span className="text-gradient">Resource Flow</span>!
+          </h1>
 
-              {/* Botoes */}
-              <div className="flex p-5 g-5 space-x-5">
-                <button
-                  className="bg-sky-600/80 rounded-2xl p-4 cursor-pointer border-2 border-transparent hover:border-white transition-all duration-300"
-                  onClick={handleSelectSingUp}
-                >
-                  Cadastrar-se
-                </button>
-                <button
-                  className="bg-emerald-600/80 rounded-2xl p-4 cursor-pointer border-2 border-transparent hover:border-white transition-all duration-300"
-                  onClick={handleSelectLogin}
-                >
-                  Fazer Login
-                </button>
-              </div>
-            </div>
+          <p className="mt-5 text-base sm:text-lg text-slate-300 max-w-xl">
+            Uma plataforma intuitiva e simples para o agendamento de eventos em
+            uma instituição de ensino.
+          </p>
+          <p className="mt-2 text-slate-400">
+            Comece fazendo o login na plataforma 🙂👇
+          </p>
+
+          {/* Botoes */}
+          <div className="mt-9 flex flex-col sm:flex-row items-center gap-4">
+            <button
+              onClick={handleSelectLogin}
+              className="group inline-flex items-center justify-center gap-2 w-64 sm:w-auto px-8 py-3.5 rounded-xl font-semibold text-white bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 shadow-lg shadow-blue-900/40 hover:shadow-blue-500/30 transition-all duration-300 cursor-pointer"
+            >
+              Fazer Login
+              <IoArrowForward className="group-hover:translate-x-1 transition-transform" />
+            </button>
+            <button
+              onClick={handleSelectSingUp}
+              className="inline-flex items-center justify-center gap-2 w-64 sm:w-auto px-8 py-3.5 rounded-xl font-semibold text-slate-100 border border-white/15 bg-white/5 hover:bg-white/10 hover:border-white/30 backdrop-blur-sm transition-all duration-300 cursor-pointer"
+            >
+              <IoPersonAddOutline size={20} />
+              Cadastrar-se
+            </button>
           </div>
         </div>
-        
-        {/* Footer */}
-        <div className="flex flex-col mt-10 mb-5">
-          <div className="footer-content ">
-            <h3 className="">
-              &copy; Victor S. | 🔱🪽, todos os direitos reservados.
-            </h3>
 
-            {/* Links utéis */}
-            <div className="mt-2.5 space-x-2.5">
+        {/* Footer */}
+        <footer className="w-full max-w-3xl mx-auto text-center pt-10">
+          <div className="border-t border-white/10 pt-6">
+            <p className="text-sm text-slate-400">
+              &copy; Victor S. | 🔱🪽 — todos os direitos reservados.
+            </p>
+            <div className="mt-4 flex items-center justify-center gap-3">
               <a
                 href="https://victorsarris.netlify.app/"
-                target="blank"
-                rel="external"
-                className="text-white no-underline mx-2.5 hover:text-blue-200"
+                target="_blank"
+                rel="noreferrer noopener"
+                title="Meu portfólio"
+                className="inline-flex items-center gap-2 rounded-lg border border-white/10 bg-white/5 px-3 py-2 text-sm text-slate-300 hover:text-white hover:border-white/25 transition-colors"
               >
-                Meu portifólio
+                <FaGlobe /> Portfólio
               </a>
               <a
                 href="https://www.linkedin.com/in/victorsarris/"
-                target="blank"
-                rel="external"
-                className="text-white no-underline mx-2.5 hover:text-blue-200"
+                target="_blank"
+                rel="noreferrer noopener"
+                title="LinkedIn"
+                className="inline-flex items-center gap-2 rounded-lg border border-white/10 bg-white/5 px-3 py-2 text-sm text-slate-300 hover:text-white hover:border-white/25 transition-colors"
               >
-                Linkedin
+                <FaLinkedin /> LinkedIn
               </a>
               <a
                 href="https://github.com/Victor-Sarris"
-                target="blank"
-                external="external"
-                className="text-white no-underline mx-2.5 hover:text-blue-200"
+                target="_blank"
+                rel="noreferrer noopener"
+                title="GitHub"
+                className="inline-flex items-center gap-2 rounded-lg border border-white/10 bg-white/5 px-3 py-2 text-sm text-slate-300 hover:text-white hover:border-white/25 transition-colors"
               >
-                <i className="fab fa-github"></i>
-                GitHub
+                <FaGithub /> GitHub
               </a>
             </div>
           </div>
-        </div>
+        </footer>
       </div>
-    </>
+    </div>
   );
 }
 
