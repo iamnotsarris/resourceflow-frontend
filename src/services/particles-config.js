@@ -1,13 +1,12 @@
 // Ficou curioso sobre as particulas? A documentação está aqui: https://vincentgarreau.com/particles.js/
-// aproveite! 
+// aproveite!
 // 2005 | Victor S. 🔱🪽
 
+// Obs: o "background" foi removido de propósito — assim o fundo da própria
+// página (var(--app), que muda com o tema) aparece atrás das partículas.
+// A cor slate-500 (#64748b) é visível tanto no tema claro quanto no escuro.
+
 const particlesConfig = {
-  background: {
-    color: {
-      value: "#0F172E", // Cor de fundo 
-    },
-  },
   fpsLimit: 60,
   interactivity: {
     events: {
@@ -26,10 +25,10 @@ const particlesConfig = {
   },
   particles: {
     color: {
-      value: "#ffffff" // cor das particulas,
+      value: "#64748b", // cor das particulas (slate-500)
     },
     links: {
-      color: "#ffffff", // cor do "link" das particulas
+      color: "#64748b", // cor do "link" das particulas
       distance: 75,
       enable: true,
       opacity: 0.3,
@@ -40,7 +39,7 @@ const particlesConfig = {
     },
     move: {
       direction: "none",
-      enable: 'true',
+      enable: true,
       outModes: {
         default: "bounce",
       },

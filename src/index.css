@@ -2,18 +2,64 @@
 @import "tailwindcss";
 
 /* ============================================================
-   Resource Flow — Fundação do Design System (tema dark unificado)
+   Resource Flow — Design System (temas claro + escuro)
+   ------------------------------------------------------------
+   As cores são TOKENS que apontam para variáveis "vivas".
+   Trocar a classe .light no <html> troca os valores → tudo se
+   adapta sozinho. (Utilitários: bg-app, bg-surface, bg-field,
+   bg-elevated, text-fg, text-muted, text-faint, border-line)
    ============================================================ */
 
 @theme {
   --font-sans: "Inter", system-ui, Avenir, Helvetica, Arial, sans-serif;
 }
 
-/* ---------- Base ---------- */
+@theme inline {
+  --color-app: var(--app);
+  --color-surface: var(--surface);
+  --color-field: var(--field);
+  --color-elevated: var(--elevated);
+  --color-fg: var(--fg);
+  --color-muted: var(--muted);
+  --color-faint: var(--faint);
+  --color-line: var(--line);
+}
+
+/* ---------- Tema ESCURO (padrão) ---------- */
 :root {
+  --app: #020617;       /* slate-950 — fundo geral */
+  --surface: #0f172a;   /* slate-900 — cards/painéis */
+  --field: #020617;     /* inputs */
+  --elevated: #1e293b;  /* slate-800 — hover/realce */
+  --fg: #f1f5f9;        /* slate-100 — texto principal */
+  --muted: #94a3b8;     /* slate-400 — texto secundário */
+  --faint: #64748b;     /* slate-500 — texto/placeholder terciário */
+  --line: #1e293b;      /* slate-800 — bordas */
+
+  --glass: rgba(15, 23, 42, 0.6);
+  --glass-strong: rgba(2, 6, 23, 0.75);
+
   color-scheme: dark;
 }
 
+/* ---------- Tema CLARO ---------- */
+:root.light {
+  --app: #f8fafc;       /* slate-50 */
+  --surface: #ffffff;
+  --field: #f1f5f9;     /* slate-100 */
+  --elevated: #e2e8f0;  /* slate-200 */
+  --fg: #0f172a;        /* slate-900 */
+  --muted: #475569;     /* slate-600 */
+  --faint: #94a3b8;     /* slate-400 */
+  --line: #e2e8f0;      /* slate-200 */
+
+  --glass: rgba(255, 255, 255, 0.75);
+  --glass-strong: rgba(255, 255, 255, 0.85);
+
+  color-scheme: light;
+}
+
+/* ---------- Base ---------- */
 html {
   scroll-behavior: smooth;
 }
@@ -25,18 +71,19 @@ body {
   font-family: var(--font-sans);
   line-height: 1.5;
   font-weight: 400;
-  color: #e2e8f0; /* slate-200 */
-  background-color: #020617; /* slate-950 */
+  color: var(--fg);
+  background-color: var(--app);
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 /* ---------- Scrollbar custom ---------- */
 * {
   scrollbar-width: thin;
-  scrollbar-color: #334155 transparent;
+  scrollbar-color: var(--line) transparent;
 }
 *::-webkit-scrollbar {
   width: 10px;
@@ -46,24 +93,24 @@ body {
   background: transparent;
 }
 *::-webkit-scrollbar-thumb {
-  background-color: #334155; /* slate-700 */
+  background-color: var(--line);
   border-radius: 9999px;
   border: 2px solid transparent;
   background-clip: content-box;
 }
 *::-webkit-scrollbar-thumb:hover {
-  background-color: #475569; /* slate-600 */
+  background-color: var(--faint);
 }
 
 /* ---------- Utilitários compartilhados ---------- */
 .glass {
-  background: rgba(15, 23, 42, 0.6); /* slate-900/60 */
+  background: var(--glass);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
 }
 
 .glass-strong {
-  background: rgba(2, 6, 23, 0.75); /* slate-950/75 */
+  background: var(--glass-strong);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
 }
@@ -77,10 +124,16 @@ body {
 
 /* Fundo com brilho radial sutil para dar profundidade */
 .app-aurora {
-  background-color: #020617;
+  background-color: var(--app);
   background-image:
     radial-gradient(ellipse 80% 60% at 15% 0%, rgba(37, 99, 235, 0.18), transparent 60%),
     radial-gradient(ellipse 70% 60% at 100% 10%, rgba(139, 92, 246, 0.16), transparent 55%);
+}
+/* No tema claro o brilho fica bem mais suave */
+:root.light .app-aurora {
+  background-image:
+    radial-gradient(ellipse 80% 60% at 15% 0%, rgba(37, 99, 235, 0.08), transparent 60%),
+    radial-gradient(ellipse 70% 60% at 100% 10%, rgba(139, 92, 246, 0.07), transparent 55%);
 }
 
 /* ---------- Animações ---------- */

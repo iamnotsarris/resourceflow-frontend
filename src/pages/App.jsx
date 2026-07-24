@@ -2,16 +2,19 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import DefaultPage from './Default.jsx'
 import Login from './Login.jsx'
 import Cadastro from './Cadastro.jsx'
-import DashBoard from './DashBoard.jsx' 
+import DashBoard from './DashBoard.jsx'
 import Diary from './Diary.jsx'
 import Support from './Support.jsx'
 import Profile from './Profile.jsx'
+import ThemeToggle from '../components/ThemeToggle.jsx'
 import './App.css'
 
 function App() {
   return (
     <>
       <BrowserRouter>
+        {/* Botão de tema visível em todas as páginas */}
+        <ThemeToggle />
         <Routes>
           {/* Rotas públicas */}
           <Route path='/' element={<DefaultPage />} />

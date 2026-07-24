@@ -9,36 +9,36 @@ function CalendarWidget() {
     <div className="p-4 sm:p-6 rounded-2xl w-full h-full">
       <style>{`
         .fc {
-          --fc-border-color: #1e293b;         /* slate-800 */
+          --fc-border-color: var(--line);
           --fc-page-bg-color: transparent;
-          --fc-neutral-bg-color: rgba(30, 41, 59, 0.4);
+          --fc-neutral-bg-color: var(--elevated);
           --fc-today-bg-color: rgba(37, 99, 235, 0.12);
-          color: #e2e8f0;
+          color: var(--fg);
         }
         .fc .fc-toolbar-title {
           font-size: 1.25rem;
           font-weight: 700;
-          color: #f8fafc;
+          color: var(--fg);
           text-transform: capitalize;
         }
         .fc .fc-col-header-cell-cushion {
-          color: #94a3b8;
+          color: var(--muted);
           font-weight: 600;
           text-transform: capitalize;
           padding: 8px 4px;
         }
         .fc .fc-daygrid-day-number {
-          color: #cbd5e1;
+          color: var(--fg);
           padding: 6px 8px;
         }
         .fc .fc-day-other .fc-daygrid-day-number {
-          color: #475569;
+          color: var(--faint);
         }
         .fc-theme-standard td, .fc-theme-standard th {
-          border-color: #1e293b;
+          border-color: var(--line);
         }
         .fc-theme-standard .fc-scrollgrid {
-          border-color: #1e293b;
+          border-color: var(--line);
           border-radius: 12px;
           overflow: hidden;
         }
@@ -57,9 +57,10 @@ function CalendarWidget() {
           background: linear-gradient(to right, #3b82f6, #6366f1);
         }
         .fc .fc-button-primary:disabled {
-          background: #334155;
+          background: var(--elevated);
+          color: var(--faint);
           box-shadow: none;
-          opacity: 0.5;
+          opacity: 0.7;
         }
         .fc .fc-button-primary:not(:disabled).fc-button-active,
         .fc .fc-button-primary:not(:disabled):active {

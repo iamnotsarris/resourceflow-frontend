@@ -104,17 +104,17 @@ function Profile() {
               <img
                 src={formData.avatar}
                 alt="Foto de Perfil"
-                className="w-32 h-32 rounded-full border-4 border-slate-950 object-cover bg-slate-800"
+                className="w-32 h-32 rounded-full border-4 border-app object-cover bg-elevated"
               />
               <button className="absolute bottom-0 right-0 p-2 bg-blue-600 rounded-full text-white hover:bg-blue-700 shadow-lg cursor-pointer transition-transform hover:scale-110">
                 <IoCamera size={20} />
               </button>
             </div>
             <div className="mb-4 ml-4">
-              <h1 className="text-2xl sm:text-3xl font-bold text-white">
+              <h1 className="text-2xl sm:text-3xl font-bold text-fg">
                 {formData.name || "Seu Nome"}
               </h1>
-              <p className="text-slate-400">{formData.role}</p>
+              <p className="text-muted">{formData.role}</p>
             </div>
           </div>
           <div className="absolute bottom-4 right-2 md:bottom-15 md:right-0">
@@ -128,7 +128,7 @@ function Profile() {
             ) : (
               <button
                 onClick={() => setIsEditing(true)}
-                className="flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-white px-6 py-2.5 rounded-xl border border-slate-700 transition-all cursor-pointer font-semibold"
+                className="flex items-center gap-2 bg-surface hover:bg-elevated text-fg px-6 py-2.5 rounded-xl border border-line transition-all cursor-pointer font-semibold"
               >
                 <IoPencil size={20} /> Editar Perfil
               </button>
@@ -136,8 +136,8 @@ function Profile() {
           </div>
         </div>
 
-        <div className="glass border border-slate-800 rounded-2xl p-6 sm:p-8 shadow-2xl max-w-4xl">
-          <h2 className="text-xl font-bold text-white mb-6 border-b border-slate-800 pb-4">
+        <div className="glass border border-line rounded-2xl p-6 sm:p-8 shadow-2xl max-w-4xl">
+          <h2 className="text-xl font-bold text-fg mb-6 border-b border-line pb-4">
             Informações Pessoais
           </h2>
 
@@ -159,14 +159,14 @@ function Profile() {
               disabled={!isEditing}
             />
             <div className="flex flex-col gap-2">
-              <label className="text-slate-400 text-sm font-medium ml-1">
+              <label className="text-muted text-sm font-medium ml-1">
                 Cargo / Função
               </label>
-              <div className="flex items-center gap-3 px-4 py-3 rounded-xl bg-slate-950/50 border border-slate-800 text-slate-500 cursor-not-allowed">
+              <div className="flex items-center gap-3 px-4 py-3 rounded-xl bg-field border border-line text-faint cursor-not-allowed">
                 <IoBriefcaseIcon />
                 <span>{formData.role}</span>
               </div>
-              <p className="text-xs text-slate-600 ml-1">
+              <p className="text-xs text-faint ml-1">
                 O cargo não pode ser alterado por aqui.
               </p>
             </div>
@@ -179,7 +179,7 @@ function Profile() {
               disabled={!isEditing}
             />
             <div className="flex flex-col gap-2 md:col-span-2">
-              <label className="text-slate-400 text-sm font-medium ml-1">
+              <label className="text-muted text-sm font-medium ml-1">
                 Sobre Mim
               </label>
               <textarea
@@ -188,15 +188,13 @@ function Profile() {
                 value={formData.bio}
                 onChange={handleInputChange}
                 disabled={!isEditing}
-                placeholder={
-                  isEditing ? "Conte um pouco sobre você..." : ""
-                }
+                placeholder={isEditing ? "Conte um pouco sobre você..." : ""}
                 className={`
-                  w-full px-4 py-3 rounded-xl bg-slate-950/60 border outline-none transition-all resize-none placeholder-slate-600
+                  w-full px-4 py-3 rounded-xl bg-field border outline-none transition-all resize-none placeholder-faint
                   ${
                     !isEditing
-                      ? "border-slate-800 text-slate-400"
-                      : "border-blue-500/50 text-white focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
+                      ? "border-line text-muted"
+                      : "border-blue-500/50 text-fg focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
                   }
                 `}
               />
@@ -211,7 +209,7 @@ function Profile() {
 function InputGroup({ label, name, value, onChange, disabled, icon }) {
   return (
     <div className="flex flex-col gap-2">
-      <label htmlFor={name} className="text-slate-400 text-sm font-medium ml-1">
+      <label htmlFor={name} className="text-muted text-sm font-medium ml-1">
         {label}
       </label>
 
@@ -220,12 +218,12 @@ function InputGroup({ label, name, value, onChange, disabled, icon }) {
           flex items-center gap-3 px-4 py-3 rounded-xl border transition-all duration-300
           ${
             disabled
-              ? "bg-slate-950/50 border-slate-800 text-slate-400"
-              : "bg-slate-950 border-blue-500/50 text-white shadow-lg shadow-blue-500/10"
+              ? "bg-field border-line text-muted"
+              : "bg-field border-blue-500/50 text-fg shadow-lg shadow-blue-500/10"
           }
         `}
       >
-        <span className={`${disabled ? "text-slate-600" : "text-blue-400"}`}>
+        <span className={`${disabled ? "text-faint" : "text-blue-500"}`}>
           {icon}
         </span>
 

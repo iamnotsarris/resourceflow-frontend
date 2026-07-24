@@ -35,7 +35,7 @@ function Sidebar() {
         <button
           onClick={() => setIsOpen(true)}
           aria-label="Abrir menu"
-          className="fixed top-6 left-6 z-40 p-3 glass text-white rounded-xl shadow-lg hover:bg-slate-800 transition-all border border-white/10 cursor-pointer"
+          className="fixed top-6 left-6 z-40 p-3 glass text-fg rounded-xl shadow-lg hover:bg-elevated transition-all border border-line cursor-pointer"
         >
           <IoMenu size={24} />
         </button>
@@ -43,8 +43,8 @@ function Sidebar() {
 
       <aside
         className={`
-          fixed left-0 top-0 h-full w-64 glass-strong text-white
-          rounded-r-3xl flex flex-col shadow-2xl z-50 border-r border-white/10
+          fixed left-0 top-0 h-full w-64 glass-strong text-fg
+          rounded-r-3xl flex flex-col shadow-2xl z-50 border-r border-line
           transition-transform duration-300 ease-in-out
           ${isOpen ? "translate-x-0" : "-translate-x-full"}
         `}
@@ -53,7 +53,7 @@ function Sidebar() {
           <button
             onClick={() => setIsOpen(false)}
             aria-label="Fechar menu"
-            className="w-10 h-10 flex items-center justify-center rounded-full bg-slate-800 hover:bg-slate-700 transition-colors text-slate-300 cursor-pointer"
+            className="w-10 h-10 flex items-center justify-center rounded-full bg-elevated hover:opacity-80 transition-opacity text-muted cursor-pointer"
           >
             <IoArrowBackSharp size={20} />
           </button>
@@ -66,12 +66,12 @@ function Sidebar() {
             />
             <div>
               <h3 className="text-xl font-bold text-gradient">Resource Flow</h3>
-              <p className="text-xs text-slate-400">Gerenciamento de Eventos</p>
+              <p className="text-xs text-muted">Gerenciamento de Eventos</p>
             </div>
           </div>
         </div>
 
-        <div className="h-px bg-white/10 mx-6 mb-2" />
+        <div className="h-px bg-line mx-6 mb-2" />
 
         <nav className="flex-1 px-4 flex flex-col gap-2">
           <MenuButton
@@ -103,7 +103,7 @@ function Sidebar() {
         <div className="p-4 mb-4">
           <button
             onClick={handleLogout}
-            className="w-full flex items-center gap-3 px-4 py-3 text-red-400 hover:bg-red-500/10 rounded-xl transition-all duration-300 group cursor-pointer"
+            className="w-full flex items-center gap-3 px-4 py-3 text-red-500 hover:bg-red-500/10 rounded-xl transition-all duration-300 group cursor-pointer"
           >
             <IoLogOutOutline
               size={22}
@@ -133,7 +133,7 @@ function MenuButton({ icon, text, active = false, onClick }) {
         ${
           active
             ? "bg-gradient-to-r from-blue-600 to-indigo-600 shadow-lg shadow-blue-500/30 text-white"
-            : "text-slate-400 hover:bg-slate-800 hover:text-white"
+            : "text-muted hover:bg-elevated hover:text-fg"
         }
       `}
     >

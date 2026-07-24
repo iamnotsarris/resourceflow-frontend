@@ -16,6 +16,7 @@ function Support() {
       <Sidebar />
 
       <main className="flex-1 p-6 md:p-10 transition-all duration-300">
+        {/* Hero com fundo colorido fixo — texto permanece branco nos dois temas */}
         <section className="bg-gradient-to-r from-blue-900 to-purple-700 text-white py-16 sm:py-20 px-6 lg:px-10 relative overflow-hidden rounded-3xl shadow-2xl">
           <div className="absolute inset-0 opacity-25 pointer-events-none">
             <div className="absolute top-10 left-10 w-40 h-40 bg-purple-400 rounded-full blur-3xl"></div>
@@ -55,17 +56,17 @@ function Support() {
         </section>
 
         {/* Card de aviso */}
-        <div className="glass w-full text-slate-200 border border-amber-500/30 p-6 flex flex-col gap-3 rounded-3xl mt-6 shadow-2xl">
-          <h2 className="flex items-center gap-2 text-xl text-amber-400 font-bold">
+        <div className="glass w-full text-fg border border-amber-500/30 p-6 flex flex-col gap-3 rounded-3xl mt-6 shadow-2xl">
+          <h2 className="flex items-center gap-2 text-xl text-amber-500 font-bold">
             <IoWarning size={24} /> Atenção
           </h2>
-          <p className="text-slate-300 leading-relaxed">
+          <p className="text-muted leading-relaxed">
             Todas as respostas são dadas por uma IA especializada no contexto
             geral da plataforma. Caso queira uma resposta mais específica, entre
             em contato com:{" "}
             <a
               href="mailto:devvictorsarris@gmail.com"
-              className="text-blue-400 hover:text-blue-300 hover:underline font-medium"
+              className="text-blue-500 hover:text-blue-400 hover:underline font-medium"
             >
               devvictorsarris@gmail.com
             </a>
@@ -84,8 +85,8 @@ function Support() {
         )}
 
         {isChatbotOpen && (
-          <div className="fixed bottom-24 right-8 w-80 md:w-96 bg-slate-900 border border-slate-700 rounded-2xl shadow-2xl z-50 flex flex-col overflow-hidden animate-fade-in-up">
-            {/* Header do Chat */}
+          <div className="fixed bottom-24 right-8 w-80 md:w-96 bg-surface border border-line rounded-2xl shadow-2xl z-50 flex flex-col overflow-hidden animate-fade-in-up">
+            {/* Header do Chat (gradiente fixo) */}
             <div className="bg-gradient-to-r from-purple-800 to-indigo-800 p-4 flex justify-between items-center">
               <h3 className="text-white font-bold flex items-center gap-2">
                 <IoChatbubbles /> Suporte Resource Flow
@@ -97,16 +98,16 @@ function Support() {
                 <IoClose size={20} />
               </button>
             </div>
-            <div className="h-64 p-4 bg-slate-900 text-slate-300 text-sm flex flex-col gap-3 overflow-y-auto">
-              <div className="self-start bg-slate-800 p-3 rounded-2xl rounded-tl-none max-w-[85%]">
+            <div className="h-64 p-4 bg-surface text-muted text-sm flex flex-col gap-3 overflow-y-auto">
+              <div className="self-start bg-elevated p-3 rounded-2xl rounded-tl-none max-w-[85%]">
                 Olá! Sou o assistente virtual. Como posso ajudar você hoje?
               </div>
             </div>
-            <div className="p-3 bg-slate-800 border-t border-slate-700">
+            <div className="p-3 bg-field border-t border-line">
               <input
                 type="text"
                 placeholder="Digite sua mensagem..."
-                className="w-full bg-slate-900 text-white px-4 py-2 rounded-full border border-slate-700 focus:outline-none focus:border-purple-500 text-sm"
+                className="w-full bg-surface text-fg px-4 py-2 rounded-full border border-line focus:outline-none focus:border-purple-500 text-sm placeholder-faint"
               />
             </div>
           </div>

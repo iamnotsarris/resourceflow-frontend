@@ -27,9 +27,9 @@ export default function AddEventModal() {
     <>
       <button
         onClick={() => setIsOpen(true)}
-        className="w-full mt-4 py-4 border-2 border-dashed border-slate-700/60 rounded-xl 
-                   flex items-center justify-center gap-2 text-slate-400 hover:text-white 
-                   hover:border-blue-500/50 hover:bg-slate-800/50 transition-all duration-300 group"
+        className="w-full mt-4 py-4 border-2 border-dashed border-line rounded-xl
+                   flex items-center justify-center gap-2 text-muted hover:text-fg
+                   hover:border-blue-500/50 hover:bg-elevated transition-all duration-300 group"
       >
         <Plus
           size={20}
@@ -48,21 +48,21 @@ export default function AddEventModal() {
           ></div>
 
           {/* Conteúdo do Modal */}
-          <div className="relative w-full max-w-lg bg-[#0f172a] border border-slate-700/50 rounded-2xl shadow-2xl transform transition-all">
+          <div className="relative w-full max-w-lg bg-surface border border-line rounded-2xl shadow-2xl transform transition-all">
             {/* Cabeçalho */}
-            <div className="flex items-center justify-between p-6 border-b border-slate-800">
+            <div className="flex items-center justify-between p-6 border-b border-line">
               <div>
-                <h2 className="text-xl font-bold text-white flex items-center gap-2">
+                <h2 className="text-xl font-bold text-fg flex items-center gap-2">
                   <Calendar className="text-blue-500" size={20} />
                   Novo Evento
                 </h2>
-                <p className="text-sm text-slate-400 mt-1">
+                <p className="text-sm text-muted mt-1">
                   Adicione os detalhes para a agenda de hoje.
                 </p>
               </div>
               <button
                 onClick={() => setIsOpen(false)}
-                className="p-2 text-slate-400 hover:text-white hover:bg-slate-800 rounded-lg transition-colors"
+                className="p-2 text-muted hover:text-fg hover:bg-elevated rounded-lg transition-colors"
               >
                 <X size={20} />
               </button>
@@ -72,7 +72,7 @@ export default function AddEventModal() {
             <form onSubmit={handleSubmit} className="p-6 space-y-4">
               {/* Nome do Evento */}
               <div className="space-y-2">
-                <label className="text-sm font-medium text-slate-300 flex items-center gap-2">
+                <label className="text-sm font-medium text-muted flex items-center gap-2">
                   <Type size={16} /> Nome do Evento
                 </label>
                 <input
@@ -82,9 +82,9 @@ export default function AddEventModal() {
                   placeholder="Ex: Aula de Desenvolvimento Web"
                   value={formData.title}
                   onChange={handleChange}
-                  className="w-full bg-slate-900 border border-slate-700 rounded-lg px-4 py-3 text-slate-200 
-                           focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500 
-                           placeholder-slate-600 transition-all"
+                  className="w-full bg-field border border-line rounded-lg px-4 py-3 text-fg
+                           focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500
+                           placeholder-faint transition-all"
                 />
               </div>
 
@@ -92,7 +92,7 @@ export default function AddEventModal() {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {/* Categoria */}
                 <div className="space-y-2">
-                  <label className="text-sm font-medium text-slate-300 flex items-center gap-2">
+                  <label className="text-sm font-medium text-muted flex items-center gap-2">
                     <Tag size={16} /> Categoria
                   </label>
                   <div className="relative">
@@ -100,7 +100,7 @@ export default function AddEventModal() {
                       name="category"
                       value={formData.category}
                       onChange={handleChange}
-                      className="w-full bg-slate-900 border border-slate-700 rounded-lg px-4 py-3 text-slate-200 
+                      className="w-full bg-field border border-line rounded-lg px-4 py-3 text-fg
                                appearance-none focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500 transition-all cursor-pointer"
                     >
                       <option value="Aula">Aula</option>
@@ -110,7 +110,7 @@ export default function AddEventModal() {
                       <option value="Pessoal">Pessoal</option>
                     </select>
                     {/* Seta customizada para o select */}
-                    <div className="absolute right-4 top-3.5 pointer-events-none text-slate-500">
+                    <div className="absolute right-4 top-3.5 pointer-events-none text-faint">
                       <svg
                         width="12"
                         height="12"
@@ -129,7 +129,7 @@ export default function AddEventModal() {
 
                 {/* Localização */}
                 <div className="space-y-2">
-                  <label className="text-sm font-medium text-slate-300 flex items-center gap-2">
+                  <label className="text-sm font-medium text-muted flex items-center gap-2">
                     <MapPin size={16} /> Localização
                   </label>
                   <input
@@ -138,16 +138,16 @@ export default function AddEventModal() {
                     placeholder="Ex: Sala 302"
                     value={formData.location}
                     onChange={handleChange}
-                    className="w-full bg-slate-900 border border-slate-700 rounded-lg px-4 py-3 text-slate-200 
-                             focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500 
-                             placeholder-slate-600 transition-all"
+                    className="w-full bg-field border border-line rounded-lg px-4 py-3 text-fg
+                             focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500
+                             placeholder-faint transition-all"
                   />
                 </div>
               </div>
 
               {/* Descrição */}
               <div className="space-y-2">
-                <label className="text-sm font-medium text-slate-300 flex items-center gap-2">
+                <label className="text-sm font-medium text-muted flex items-center gap-2">
                   <AlignLeft size={16} /> Descrição
                 </label>
                 <textarea
@@ -156,18 +156,18 @@ export default function AddEventModal() {
                   placeholder="Detalhes adicionais sobre o evento..."
                   value={formData.description}
                   onChange={handleChange}
-                  className="w-full bg-slate-900 border border-slate-700 rounded-lg px-4 py-3 text-slate-200 
-                           focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500 
-                           placeholder-slate-600 transition-all resize-none"
+                  className="w-full bg-field border border-line rounded-lg px-4 py-3 text-fg
+                           focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500
+                           placeholder-faint transition-all resize-none"
                 ></textarea>
               </div>
 
               {/* Botões de Ação */}
-              <div className="flex justify-end gap-3 pt-4 border-t border-slate-800 mt-2">
+              <div className="flex justify-end gap-3 pt-4 border-t border-line mt-2">
                 <button
                   type="button"
                   onClick={() => setIsOpen(false)}
-                  className="px-5 py-2.5 rounded-lg text-sm font-medium text-slate-300 hover:text-white hover:bg-slate-800 transition-colors"
+                  className="px-5 py-2.5 rounded-lg text-sm font-medium text-muted hover:text-fg hover:bg-elevated transition-colors"
                 >
                   Cancelar
                 </button>

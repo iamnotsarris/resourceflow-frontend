@@ -14,7 +14,7 @@ function DefaultPage() {
   const handleSelectSingUp = () => navigate("/cadastro");
 
   return (
-    <div className="relative min-h-screen overflow-hidden app-aurora text-white">
+    <div className="relative min-h-screen overflow-hidden app-aurora text-fg">
       {/* Inicializacao de particulas */}
       <ParticlesBackground />
 
@@ -28,7 +28,7 @@ function DefaultPage() {
             className="h-28 w-28 sm:h-40 sm:w-40 object-contain drop-shadow-[0_0_35px_rgba(96,165,250,0.35)]"
           />
 
-          <span className="mt-6 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-1.5 text-xs sm:text-sm font-medium text-slate-300 backdrop-blur-sm">
+          <span className="mt-6 inline-flex items-center gap-2 rounded-full border border-line bg-field px-4 py-1.5 text-xs sm:text-sm font-medium text-muted backdrop-blur-sm">
             <span className="h-2 w-2 rounded-full bg-emerald-400 animate-pulse" />
             Agendamento inteligente para instituições de ensino
           </span>
@@ -38,11 +38,11 @@ function DefaultPage() {
             <span className="text-gradient">Resource Flow</span>!
           </h1>
 
-          <p className="mt-5 text-base sm:text-lg text-slate-300 max-w-xl">
+          <p className="mt-5 text-base sm:text-lg text-muted max-w-xl">
             Uma plataforma intuitiva e simples para o agendamento de eventos em
             uma instituição de ensino.
           </p>
-          <p className="mt-2 text-slate-400">
+          <p className="mt-2 text-muted">
             Comece fazendo o login na plataforma 🙂👇
           </p>
 
@@ -57,7 +57,7 @@ function DefaultPage() {
             </button>
             <button
               onClick={handleSelectSingUp}
-              className="inline-flex items-center justify-center gap-2 w-64 sm:w-auto px-8 py-3.5 rounded-xl font-semibold text-slate-100 border border-white/15 bg-white/5 hover:bg-white/10 hover:border-white/30 backdrop-blur-sm transition-all duration-300 cursor-pointer"
+              className="inline-flex items-center justify-center gap-2 w-64 sm:w-auto px-8 py-3.5 rounded-xl font-semibold text-fg border border-line bg-field hover:bg-elevated hover:border-blue-500/40 backdrop-blur-sm transition-all duration-300 cursor-pointer"
             >
               <IoPersonAddOutline size={20} />
               Cadastrar-se
@@ -67,8 +67,8 @@ function DefaultPage() {
 
         {/* Footer */}
         <footer className="w-full max-w-3xl mx-auto text-center pt-10">
-          <div className="border-t border-white/10 pt-6">
-            <p className="text-sm text-slate-400">
+          <div className="border-t border-line pt-6">
+            <p className="text-sm text-muted">
               &copy; Victor S. | 🔱🪽 — todos os direitos reservados.
             </p>
             <div className="mt-4 flex items-center justify-center gap-3">
@@ -77,7 +77,7 @@ function DefaultPage() {
                 target="_blank"
                 rel="noreferrer noopener"
                 title="Meu portfólio"
-                className="inline-flex items-center gap-2 rounded-lg border border-white/10 bg-white/5 px-3 py-2 text-sm text-slate-300 hover:text-white hover:border-white/25 transition-colors"
+                className="inline-flex items-center gap-2 rounded-lg border border-line bg-field px-3 py-2 text-sm text-muted hover:text-fg hover:border-blue-500/40 transition-colors"
               >
                 <FaGlobe /> Portfólio
               </a>
@@ -86,7 +86,7 @@ function DefaultPage() {
                 target="_blank"
                 rel="noreferrer noopener"
                 title="LinkedIn"
-                className="inline-flex items-center gap-2 rounded-lg border border-white/10 bg-white/5 px-3 py-2 text-sm text-slate-300 hover:text-white hover:border-white/25 transition-colors"
+                className="inline-flex items-center gap-2 rounded-lg border border-line bg-field px-3 py-2 text-sm text-muted hover:text-fg hover:border-blue-500/40 transition-colors"
               >
                 <FaLinkedin /> LinkedIn
               </a>
@@ -95,7 +95,7 @@ function DefaultPage() {
                 target="_blank"
                 rel="noreferrer noopener"
                 title="GitHub"
-                className="inline-flex items-center gap-2 rounded-lg border border-white/10 bg-white/5 px-3 py-2 text-sm text-slate-300 hover:text-white hover:border-white/25 transition-colors"
+                className="inline-flex items-center gap-2 rounded-lg border border-line bg-field px-3 py-2 text-sm text-muted hover:text-fg hover:border-blue-500/40 transition-colors"
               >
                 <FaGithub /> GitHub
               </a>

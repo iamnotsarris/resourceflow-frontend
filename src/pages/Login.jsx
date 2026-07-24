@@ -63,7 +63,7 @@ function Login() {
   };
 
   return (
-    <div className="relative min-h-screen overflow-hidden app-aurora text-white">
+    <div className="relative min-h-screen overflow-hidden app-aurora text-fg">
       <ParticlesBackground />
 
       {/* Configurações Gerais da página */}
@@ -73,23 +73,23 @@ function Login() {
           <button
             title="Voltar para a página anterior"
             onClick={handleReturnPage}
-            className="mb-4 inline-flex items-center gap-2 text-sm text-slate-300 hover:text-white transition-colors cursor-pointer"
+            className="mb-4 inline-flex items-center gap-2 text-sm text-muted hover:text-fg transition-colors cursor-pointer"
           >
             <FaArrowLeft size={16} />
             Voltar
           </button>
 
           {/* Container Principal */}
-          <div className="grid lg:grid-cols-2 rounded-3xl overflow-hidden border border-white/10 glass shadow-2xl">
+          <div className="grid lg:grid-cols-2 rounded-3xl overflow-hidden border border-line glass shadow-2xl">
             {/* Conteudo secundario (marca) */}
-            <div className="hidden lg:flex flex-col items-center justify-center gap-6 p-10 bg-gradient-to-br from-blue-600/20 to-purple-600/20 border-r border-white/10 text-center">
+            <div className="hidden lg:flex flex-col items-center justify-center gap-6 p-10 bg-gradient-to-br from-blue-600/20 to-purple-600/20 border-r border-line text-center">
               <img
                 src={Logo}
                 alt="Resource Flow"
                 title="Esse é meu gatinho :)"
                 className="h-44 w-44 object-contain drop-shadow-[0_0_35px_rgba(96,165,250,0.35)]"
               />
-              <h3 className="text-lg font-semibold text-slate-200 max-w-xs leading-relaxed">
+              <h3 className="text-lg font-semibold text-fg max-w-xs leading-relaxed">
                 Como aquele velho ditado... Falta um pouquinho pra daqui a
                 pouco.
               </h3>
@@ -106,20 +106,20 @@ function Login() {
                 />
               </div>
 
-              <h2 className="text-2xl font-bold text-white text-center">
+              <h2 className="text-2xl font-bold text-fg text-center">
                 Bem-vindo de volta 👋
               </h2>
-              <p className="text-sm text-slate-400 text-center mt-1">
+              <p className="text-sm text-muted text-center mt-1">
                 Para continuar, coloque seus dados abaixo.
               </p>
 
               {/* botoes de login social */}
               <div className="mt-7 grid grid-cols-1 sm:grid-cols-2 gap-3">
-                <button className="flex items-center justify-center gap-3 border border-white/15 bg-white/5 text-slate-100 p-3 rounded-xl cursor-pointer transition-all duration-300 hover:bg-white/10 hover:border-white/30">
+                <button className="flex items-center justify-center gap-3 border border-line bg-field text-fg p-3 rounded-xl cursor-pointer transition-all duration-300 hover:bg-elevated hover:border-blue-500/40">
                   <FcGoogle size={22} />
                   Google
                 </button>
-                <button className="flex items-center justify-center gap-3 border border-white/15 bg-white/5 text-slate-100 p-3 rounded-xl cursor-pointer transition-all duration-300 hover:bg-white/10 hover:border-white/30">
+                <button className="flex items-center justify-center gap-3 border border-line bg-field text-fg p-3 rounded-xl cursor-pointer transition-all duration-300 hover:bg-elevated hover:border-blue-500/40">
                   <FaGithub size={22} />
                   GitHub
                 </button>
@@ -127,9 +127,9 @@ function Login() {
 
               {/* divisor */}
               <div className="flex items-center gap-4 my-6">
-                <span className="h-px flex-1 bg-white/10" />
-                <span className="text-xs text-slate-500 font-medium">OU</span>
-                <span className="h-px flex-1 bg-white/10" />
+                <span className="h-px flex-1 bg-line" />
+                <span className="text-xs text-faint font-medium">OU</span>
+                <span className="h-px flex-1 bg-line" />
               </div>
 
               {/* Campos de registro */}
@@ -142,7 +142,7 @@ function Login() {
                   title="Insira seu Email aqui"
                   value={formData.email}
                   onChange={handleChange}
-                  className="w-full bg-slate-950/60 text-white p-3.5 border border-white/10 rounded-xl outline-none transition-all placeholder-slate-500 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/30"
+                  className="w-full bg-field text-fg p-3.5 border border-line rounded-xl outline-none transition-all placeholder-faint focus:border-blue-500 focus:ring-2 focus:ring-blue-500/30"
                 />
 
                 {/* Campo de senha com botão de "ver senha" */}
@@ -156,13 +156,13 @@ function Login() {
                     title="Insira sua senha aqui"
                     value={formData.password}
                     onChange={handleChange}
-                    className="w-full bg-slate-950/60 text-white p-3.5 pr-12 border border-white/10 rounded-xl outline-none transition-all placeholder-slate-500 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/30"
+                    className="w-full bg-field text-fg p-3.5 pr-12 border border-line rounded-xl outline-none transition-all placeholder-faint focus:border-blue-500 focus:ring-2 focus:ring-blue-500/30"
                   />
                   <button
                     type="button"
                     onClick={() => setShowPassword(!showPassword)}
                     title={showPassword ? "Ocultar senha" : "Mostrar senha"}
-                    className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-white cursor-pointer bg-transparent border-none transition-colors"
+                    className="absolute right-3 top-1/2 -translate-y-1/2 text-muted hover:text-fg cursor-pointer bg-transparent border-none transition-colors"
                   >
                     {showPassword ? (
                       <VscEye size={20} />
@@ -180,17 +180,17 @@ function Login() {
                 </button>
               </form>
 
-              <p className="text-center text-sm text-slate-400 mt-6">
+              <p className="text-center text-sm text-muted mt-6">
                 Não tem uma conta?{" "}
                 <button
                   onClick={() => navigate("/cadastro")}
-                  className="text-blue-400 hover:text-blue-300 font-medium cursor-pointer transition-colors"
+                  className="text-blue-500 hover:text-blue-400 font-medium cursor-pointer transition-colors"
                 >
                   Cadastre-se
                 </button>
               </p>
 
-              <p className="text-[12px] text-slate-500 text-center mt-6">
+              <p className="text-[12px] text-faint text-center mt-6">
                 Resource Flow 2025 | 🔱🪽
               </p>
             </div>

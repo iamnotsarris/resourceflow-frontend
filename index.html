@@ -5,6 +5,16 @@
     <link rel="shortcut icon" href="/Resource Flow.png" type="image/x-icon" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>frontend</title>
+    <!-- Aplica o tema antes do React montar, evitando o "flash" de tema errado -->
+    <script>
+      (function () {
+        var saved = localStorage.getItem("theme");
+        var claro = saved
+          ? saved === "light"
+          : window.matchMedia("(prefers-color-scheme: light)").matches;
+        if (claro) document.documentElement.classList.add("light");
+      })();
+    </script>
   </head>
   <body>
     <div id="root"></div>
