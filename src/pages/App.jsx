@@ -7,6 +7,7 @@ import Diary from "./Diary.jsx";
 import Support from "./Support.jsx";
 import Profile from "./Profile.jsx";
 import ThemeToggle from "../components/ThemeToggle.jsx";
+import Found404 from "./Found404.jsx";
 import "./App.css";
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
           <Route path="/diary" element={<Diary />} />
           <Route path="/support" element={<Support />} />
           <Route path="/profile" element={<Profile />} />
+          <Route path="/*" element={<Found404 />} />
         </Routes>
       </BrowserRouter>
     </>
