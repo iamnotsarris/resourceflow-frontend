@@ -28,7 +28,8 @@ function Profile() {
       const userObj = JSON.parse(storedUser);
       const userId = userObj.id;
 
-      fetch(`http://localhost:3000/api/users/${userId}`)
+      // ALTERAÇÃO AQUI: Usando a variável de ambiente na chamada GET
+      fetch(`${import.meta.env.VITE_API_URL}/api/users/${userId}`)
         .then((response) => {
           if (!response.ok) throw new Error("Erro ao buscar perfil");
           return response.json();
@@ -65,8 +66,9 @@ function Profile() {
       const userObj = JSON.parse(storedUser);
       const userId = userObj.id;
 
+      // ALTERAÇÃO AQUI: Usando a variável de ambiente na chamada PUT
       const response = await fetch(
-        `http://localhost:3000/api/users/${userId}`,
+        `${import.meta.env.VITE_API_URL}/api/users/${userId}`,
         {
           method: "PUT",
           headers: { "Content-Type": "application/json" },
@@ -75,7 +77,7 @@ function Profile() {
             email: formData.email,
             telefone: formData.phone,
           }),
-        }
+        },
       );
 
       if (response.ok) {

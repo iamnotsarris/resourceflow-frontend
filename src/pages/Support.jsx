@@ -87,7 +87,7 @@ function Support() {
         {isChatbotOpen && (
           <div className="fixed bottom-24 right-8 w-80 md:w-96 bg-surface border border-line rounded-2xl shadow-2xl z-50 flex flex-col overflow-hidden animate-fade-in-up">
             {/* Header do Chat (gradiente fixo) */}
-            <div className="bg-gradient-to-r from-purple-800 to-indigo-800 p-4 flex justify-between items-center">
+            <div className="bg-linear-to-r from-purple-800 to-indigo-800 p-4 flex justify-between items-center">
               <h3 className="text-white font-bold flex items-center gap-2">
                 <IoChatbubbles /> Suporte Resource Flow
               </h3>
