@@ -25,7 +25,7 @@ function App() {
           <Route path="/diary" element={<Diary />} />
           <Route path="/support" element={<Support />} />
           <Route path="/profile" element={<Profile />} />
-          <Route path="/*" element={<Found404 />} />
+          <Route path="*" element={<Found404 />} />
         </Routes>
       </BrowserRouter>
     </>
